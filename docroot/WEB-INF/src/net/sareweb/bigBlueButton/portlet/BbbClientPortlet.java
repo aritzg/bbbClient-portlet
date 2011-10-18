@@ -72,7 +72,7 @@ public class BbbClientPortlet extends MVCPortlet {
 				}
 			
 				request.setAttribute("roomURL", bbbManager.createConnectionURL(themeDisplay.getUser().getScreenName(), String.valueOf(themeDisplay.getScopeGroupId()), String.valueOf(themeDisplay.getScopeGroupId())));
-			
+				viewJSP="/html/bbb/view.jsp";
 			}
 			catch(Exception e){
 				_log.error("Error accesing meeting.", e);
