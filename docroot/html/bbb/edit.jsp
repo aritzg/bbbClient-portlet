@@ -24,6 +24,7 @@
 <%
 	String redirect = ParamUtil.getString(request, "redirect");
 	
+	String pref_protocol = prefs.getValue("pref_protocol","http");
 	String pref_server = prefs.getValue("pref_server","localhost");
 	String pref_port = prefs.getValue("pref_port","80");
 	String pref_api_base = prefs.getValue("pref_api_base","bigbluebutton/api");
@@ -37,7 +38,10 @@
 
 <aui:form action="<%= configurationURL %>" method="post" name="fm">
 	<aui:input name="redirect" type="hidden" value="<%= redirect %>" />
-
+	<aui:select name="pref_protocol" label="bbb.protocol">
+		<aui:option value="http" selected='<%=pref_protocol.equals("http")%>' label="bbb.http"></aui:option>
+		<aui:option value="https" selected='<%=pref_protocol.equals("https")%>' label="bbb.https"></aui:option>
+	</aui:select>
 	<aui:input name="pref_server" value="<%=pref_server%>" label="bbb.server"/>
 	<aui:input name="pref_port" value="<%=pref_port%>" label="bbb.port"/>
 	<aui:input name="pref_api_base" value="<%=pref_api_base%>" label="bbb.api_base"/>

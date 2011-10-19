@@ -54,12 +54,13 @@ public class BbbClientPortlet extends MVCPortlet {
 		themeDisplay = (ThemeDisplay) request.getAttribute(WebKeys.THEME_DISPLAY);
 		
 		if(themeDisplay.isSignedIn()){
+			String pref_protocol = prefs.getValue("pref_protocol","http");
 			String pref_server = prefs.getValue("pref_server","localhost");
 			String pref_port = prefs.getValue("pref_port","80");
 			String pref_api_base = prefs.getValue("pref_api_base","bigbluebutton/api");
 			String pref_salt = prefs.getValue("pref_salt","");
 			
-			String apiUrl ="http://" + pref_server + ":" + pref_port + "/" + pref_api_base + "/";
+			String apiUrl = pref_protocol + "://" + pref_server + ":" + pref_port + "/" + pref_api_base + "/";
 			System.out.println(apiUrl);
 			BbbManager bbbManager = new BbbManager(apiUrl, pref_salt);
 			
@@ -97,7 +98,19 @@ public class BbbClientPortlet extends MVCPortlet {
 			if(prefName.startsWith("pref")){
 				_log.debug("updating " + prefName);
 				String prefValue= request.getParameter(prefName);
-				if(prefValue!=null)prefs.setValue(prefName, prefValue);
+				if(prefValue!=null){
+					if(prefName.equals("pref_server")){
+						//Get rid of protocol in url, in case user writes it
+						prefValue = prefValue.toLowerCase();
+						if(prefValue.startsWith("http://")){
+							prefValue = prefValue.substring(7);
+						}
+						if(prefValue.startsWith("https://")){
+							prefValue = prefValue.substring(8);
+						}
+					}
+					prefs.setValue(prefName, prefValue);
+				}
 			}
 		}
 		prefs.store();
