@@ -54,8 +54,15 @@ public class BbbClientPortlet extends MVCPortlet {
 		themeDisplay = (ThemeDisplay) request.getAttribute(WebKeys.THEME_DISPLAY);
 		
 		if(themeDisplay.isSignedIn()){
+			String pref_server = prefs.getValue("pref_server","");
+			//If no server is especified, redirect to preferences page
+			if(pref_server.equals("")){
+				viewJSP="/html/bbb/edit.jsp";
+				super.doView(request, response);
+				return;
+			}
+			
 			String pref_protocol = prefs.getValue("pref_protocol","http");
-			String pref_server = prefs.getValue("pref_server","localhost");
 			String pref_port = prefs.getValue("pref_port","80");
 			String pref_api_base = prefs.getValue("pref_api_base","bigbluebutton/api");
 			String pref_salt = prefs.getValue("pref_salt","");

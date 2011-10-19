@@ -25,7 +25,7 @@
 	String redirect = ParamUtil.getString(request, "redirect");
 	
 	String pref_protocol = prefs.getValue("pref_protocol","http");
-	String pref_server = prefs.getValue("pref_server","localhost");
+	String pref_server = prefs.getValue("pref_server","");
 	String pref_port = prefs.getValue("pref_port","80");
 	String pref_api_base = prefs.getValue("pref_api_base","bigbluebutton/api");
 
