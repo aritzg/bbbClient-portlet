@@ -17,11 +17,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *  
  *  Contact: aritz@sareweb.net
+ *  twitter: @aritzg
  */
 %>
 
 <%@include file="/html/init.jsp" %>
 <%
+
 	String redirect = ParamUtil.getString(request, "redirect");
 	
 	String pref_protocol = prefs.getValue("pref_protocol","http");

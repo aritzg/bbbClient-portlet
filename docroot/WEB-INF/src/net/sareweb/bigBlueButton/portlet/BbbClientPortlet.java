@@ -57,7 +57,7 @@ public class BbbClientPortlet extends MVCPortlet {
 			String pref_server = prefs.getValue("pref_server","");
 			//If no server is especified, redirect to preferences page
 			if(pref_server.equals("")){
-				viewJSP="/html/bbb/edit.jsp";
+				viewTemplate="/html/bbb/edit.jsp";
 				super.doView(request, response);
 				return;
 			}
@@ -80,15 +80,15 @@ public class BbbClientPortlet extends MVCPortlet {
 				}
 			
 				request.setAttribute("roomURL", bbbManager.createConnectionURL(themeDisplay.getUser().getScreenName(), String.valueOf(themeDisplay.getScopeGroupId()), String.valueOf(themeDisplay.getScopeGroupId())));
-				viewJSP="/html/bbb/view.jsp";
+				viewTemplate="/html/bbb/view.jsp";
 			}
 			catch(Exception e){
 				_log.error("Error accesing meeting.", e);
-				viewJSP="/html/bbb/error.jsp";
+				viewTemplate="/html/bbb/error.jsp";
 			}
 		}
 		else{
-			viewJSP="/html/bbb/not_logged.jsp";
+			viewTemplate="/html/bbb/not_logged.jsp";
 		}
 			
 		super.doView(request, response);

@@ -17,6 +17,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *  
  *  Contact: aritz@sareweb.net
+ *  twitter: @aritzg
  */
 %>
 
@@ -27,8 +28,8 @@
 <%@ taglib uri="http://liferay.com/tld/theme" prefix="liferay-theme" %>
 <%@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
 <%@ taglib uri="http://liferay.com/tld/util" prefix="liferay-util" %>
-<%@ taglib uri="http://liferay.com/tld/aui" prefix="aui" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://alloy.liferay.com/tld/aui" prefix="aui"%>
 
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Locale"%>
